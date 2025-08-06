@@ -109,17 +109,6 @@ debug: true
 - **Java**: 8+
 - **Dependencies**: None (optional: LuckPerms, Economy plugin)
 
-## 📁 Project Structure
-
-**Note**: This repository contains both the Minecraft plugin and Shopify theme files. The `.liquid` files are Shopify theme templates and are NOT part of the Minecraft plugin.
-
-```
-mineshopify/
-├── src/main/java/          # Minecraft Plugin (Java)
-├── src/main/resources/     # Plugin resources
-├── *.liquid               # Shopify Theme Files (separate)
-└── shopitheme/            # Additional theme files (separate)
-```
 
 ## 📄 License
 
