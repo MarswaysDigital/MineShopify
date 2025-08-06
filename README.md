@@ -128,9 +128,8 @@ Copyright © 2025 MineShopify by Marsways Digital Services
 ## 🤝 Support
 
 - Website: https://mineshopify.com
-- Documentation: [Wiki]
-- Issues: [GitHub Issues]
+- Documentation: https://docs.mineshopify.com
 
 ---
 
-**Note**: This plugin is generic and can be used with any Minecraft server. Customize the configuration to fit your needs.
+**Note**: This plugin is generic and can be used with any Minecraft Spigot / Paper server. Customize the configuration to fit your needs.
