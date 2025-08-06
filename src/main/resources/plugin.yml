@@ -1,0 +1,19 @@
+name: MineShopify
+version: ${project.version}
+main: eu.venxu.mineshopify.MineShopify
+api-version: 1.13
+authors: [Marsways Digital Services]
+description: Minecraft plugin for Shopify integration
+website: https://mineshopify.com
+
+commands:
+  mineshopify:
+    description: Main command for MineShopify
+    aliases: [ms, shop]
+    permission: mineshopify.admin
+    usage: /mineshopify [reload|status]
+
+permissions:
+  mineshopify.admin:
+    description: Allows access to all MineShopify commands
+    default: op

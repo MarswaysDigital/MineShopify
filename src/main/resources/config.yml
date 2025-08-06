@@ -1,0 +1,162 @@
+# MineShopify Configuration
+# Copyright © 2025 MineShopify by Marsways Digital Services
+# Generic configuration for all Minecraft servers
+
+# =====================================================
+# SHOPIFY API SETUP
+# =====================================================
+# How to create a Shopify App for API access:
+# 
+# 1. Log in to your Shopify admin area (https://admin.shopify.com)
+# 2. Go to "Apps" in the left menu
+# 3. Click on "Develop apps" (top right)
+# 4. Click on "Create an app"
+# 5. Enter a name for your app (e.g., "MineShopify Integration")
+# 6. Select "Custom app" as the app type
+# 7. Click on "Create app"
+# 
+# Setting up API permissions:
+# 1. Go to the "API permissions" tab
+# 2. Enable the following permissions:
+#    - read_orders: To read orders (REQUIRED)
+#    - read_customers: To read customer data (RECOMMENDED)
+#    - read_products: To read product data (OPTIONAL)
+# 3. Click on "Save"
+# 
+# Obtaining API credentials:
+# 1. Go to the "API credentials" tab
+# 2. In the "Admin API" section, you'll find the API access token
+# 3. Copy this token and paste it below under "token"
+# 
+# IMPORTANT: Keep your API token secure! It grants access to your Shopify data.
+
+# Debug mode (true/false)
+# When enabled, additional information will be displayed in the console
+debug: false
+
+# Shopify API Settings
+shopify:
+  # Your Shopify domain (without https://)
+  # Example: if your shop is accessible at https://my-shop.myshopify.com,
+  # enter only "my-shop.myshopify.com" here
+  domain: "my-shop.myshopify.com"
+  
+  # Your Shopify API token (see instructions above)
+  token: "shpat_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  
+  # Time interval in seconds to check for new orders
+  # Recommended: 60 (1 minute)
+  scheduler: 60
+  
+  # Maximum number of orders to retrieve per request
+  # Recommended: 50
+  max_orders: 50
+  
+  # Number of days in the past to retrieve orders for
+  # Recommended: 1 (today)
+  days_to_check: 1
+
+# Storage Settings
+storage:
+  # Use MySQL storage (true) or file storage (false)
+  MySQL: false
+  
+  # MySQL connection data (only relevant if MySQL: true)
+  host: "localhost"
+  port: 3306
+  database: "minecraft"
+  username: "root"
+  password: "password"
+  
+  # Connection pool settings
+  pool:
+    # Maximum number of connections in the pool
+    max_connections: 10
+    
+    # Minimum number of idle connections in the pool
+    min_idle: 3
+    
+    # Timeout for idle connections (in minutes)
+    idle_timeout: 10
+    
+    # Maximum lifetime of a connection (in minutes)
+    max_lifetime: 30
+
+# =====================================================
+# PACKAGE CONFIGURATION
+# =====================================================
+# Here you define the packages that are sold in your Shopify store
+# 
+# Format:
+# "Package Name":
+#   commands:
+#     - "Command 1 with %player% as placeholder for the player name"
+#     - "Command 2 with %player% as placeholder for the player name"
+#
+# IMPORTANT: The "Package Name" must match EXACTLY with the product name in Shopify!
+# Case sensitivity matters.
+#
+# Example: If your product in Shopify is called "VIP Rank", it must also be called "VIP Rank" here.
+packages:
+  "VIP Rank":
+    commands:
+      - "lp user %player% group add vip"
+      - "give %player% diamond 32"
+      - "give %player% golden_apple 16"
+      - "title %player% title {\"text\":\"VIP\",\"color\":\"gold\",\"bold\":true}"
+      - "title %player% subtitle {\"text\":\"Welcome to the VIP Club!\",\"color\":\"yellow\"}"
+      - "broadcast &6[&e&lSHOP&6] &e%player% &7is now a &6&lVIP &7member! 🎉"
+  
+  "Premium Rank":
+    commands:
+      - "lp user %player% group add premium"
+      - "give %player% diamond 64"
+      - "give %player% golden_apple 32"
+      - "give %player% elytra 1"
+      - "title %player% title {\"text\":\"PREMIUM\",\"color\":\"light_purple\",\"bold\":true}"
+      - "title %player% subtitle {\"text\":\"Premium Power activated!\",\"color\":\"purple\"}"
+      - "broadcast &6[&e&lSHOP&6] &e%player% &7has secured &6&lPREMIUM &7status! ⭐"
+  
+  "Ultimate Rank":
+    commands:
+      - "lp user %player% group add ultimate"
+      - "give %player% diamond_block 16"
+      - "give %player% golden_apple 64"
+      - "give %player% elytra 1"
+      - "give %player% netherite_ingot 8"
+      - "title %player% title {\"text\":\"ULTIMATE\",\"color\":\"dark_purple\",\"bold\":true}"
+      - "title %player% subtitle {\"text\":\"Ultimate Power unlocked!\",\"color\":\"light_purple\"}"
+      - "broadcast &6[&e&lSHOP&6] &e%player% &7is now &6&lULTIMATE &7- the highest rank! 👑"
+      - "effect give %player% minecraft:speed 300 1"
+      - "effect give %player% minecraft:jump_boost 300 1"
+  
+  "1000 Coins":
+    commands:
+      - "eco give %player% 1000"
+      - "title %player% title {\"text\":\"+1000 Coins\",\"color\":\"gold\",\"bold\":true}"
+      - "title %player% subtitle {\"text\":\"Enjoy spending them!\",\"color\":\"yellow\"}"
+      - "broadcast &6[&e&lSHOP&6] &e%player% &7received &61000 Coins&7! 💰"
+  
+  "5000 Coins":
+    commands:
+      - "eco give %player% 5000"
+      - "title %player% title {\"text\":\"+5000 Coins\",\"color\":\"gold\",\"bold\":true}"
+      - "title %player% subtitle {\"text\":\"Mega Coin Boost!\",\"color\":\"yellow\"}"
+      - "broadcast &6[&e&lSHOP&6] &e%player% &7received &65000 Coins&7! 🤑"
+
+# Notifications
+notifications:
+  # Enable in-game notifications (true/false)
+  enabled: true
+  
+  # Users who should receive notifications (usernames)
+  recipients:
+    - "admin"
+    - "owner"
+  
+  # Message sent when a new order is received
+  # Placeholders: %player%, %package%, %order_id%
+  message: "&6[&e&lSHOP&6] &e%player% &7purchased &6%package%&7! 🎉 (ID: &e%order_id%&7)"
+  
+  # Additional success message for the buyer
+  success_message: "&a&l✓ SUCCESS! &7Your &6%package% &7has been activated! Have fun! 🎮"
