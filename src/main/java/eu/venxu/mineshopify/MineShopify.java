@@ -98,7 +98,7 @@ public final class MineShopify extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(PREFIX + "Plugin §bMineShopify §7is §4deactivated.");
         Bukkit.getConsoleSender().sendMessage(PREFIX + "");
         Bukkit.getConsoleSender().sendMessage(PREFIX + "§8↠ §7https://mineshopify.com/");
-        Bukkit.getConsoleSender().sendMessage(PREFIX + "Copyright 2025 MineShopify by Astrovio");
+        Bukkit.getConsoleSender().sendMessage(PREFIX + "Copyright 2025 MineShopify by Marsways Digital Services");
     }
 
     /**
